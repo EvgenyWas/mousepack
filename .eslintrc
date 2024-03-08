@@ -1,0 +1,43 @@
+{
+  "extends": ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+  },
+  "rules": {
+    "@typescript-eslint/ban-types": 2,
+    "@typescript-eslint/no-explicit-any": 0,
+    "vue/script-setup-uses-vars": 2,
+    "vue/no-v-html": 0,
+    "vue/no-v-text-v-html-on-component": 0,
+    "vue/multi-word-component-names": 0,
+    "vue/no-multiple-template-root": 0,
+    "vue/max-attributes-per-line": ["error", { "singleline": { "max": 3 } }],
+    "new-cap": 2,
+    "object-property-newline": 0,
+    "no-console": 0,
+    "import/no-named-as-default-member": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+      },
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "bracesSpacing": true,
+        "printWidth": 120,
+        "singleQuote": true,
+        "singleAttributePerLine": false,
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "semi": true,
+        "endOfLine": "auto",
+      },
+    ],
+    "quotes": ["error", "single"],
+  },
+}

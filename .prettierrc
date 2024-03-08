@@ -1,0 +1,10 @@
+{
+  "bracesSpacing": true,
+  "printWidth": 120,
+  "singleQuote": true,
+  "singleAttributePerLine": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "semi": true,
+  "endOfLine": "auto"
+}
