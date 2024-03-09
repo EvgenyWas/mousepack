@@ -1,0 +1,44 @@
+// Gutters
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+
+// Grid breakpoints (define the minimum dimensions at which your layout will change, adapting to different screen sizes, for use in media queries)
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+@include assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');
+
+// Grid containers (define the maximum width of `.container` for different screen sizes)
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+) !default;
+
+@include assert-ascending($container-max-widths, '$container-max-widths');
+
+// Grid columns (set the number of columns and specify the width of the gutters)
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+
+// Container padding
+$container-padding-x: $grid-gutter-width !default;
+$prefix: grid- !default;
+$include-column-box-sizing: true !default;

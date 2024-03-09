@@ -22,6 +22,6 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ['@nuxtjs/sitemap'],
-  ssr: true,
+  modules: ['@nuxtjs/sitemap', 'nuxt-purgecss'],
+  css: ['./assets/styles/index.scss'],
 });

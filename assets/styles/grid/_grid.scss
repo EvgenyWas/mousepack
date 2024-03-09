@@ -1,0 +1,17 @@
+// Row - rows contain your columns
+:root {
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
+}
+
+.row {
+  @include make-row;
+
+  > * {
+    @include make-col-ready;
+  }
+}
+
+// Columns - common styles for small and large grid columns
+@include make-grid-columns;

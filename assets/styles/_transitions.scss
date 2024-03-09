@@ -1,0 +1,10 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 400ms;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  filter: blur(1rem);
+  opacity: 0;
+}
