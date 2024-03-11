@@ -24,7 +24,6 @@ export default defineNuxtConfig({
     autoLastmod: true,
     cacheMaxAgeSeconds: 60 * 60 * 24,
   },
-  routeRules: { '/**': { static: true } },
   experimental: {
     payloadExtraction: false,
     renderJsonPayloads: false,
@@ -34,4 +33,21 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/sitemap', 'nuxt-purgecss'],
   css: ['./assets/styles/index.scss'],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "sass:map"; 
+            @use "sass:list"; 
+            @use "sass:string"; 
+            @use "sass:math"; 
+            @use "sass:meta"; 
+            @import "~/assets/styles/mixins"; 
+            @import "~/assets/styles/variables";
+          `,
+        },
+      },
+    },
+  },
 });
