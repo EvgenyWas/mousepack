@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
+    rootId: 'mousepack',
     head: {
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
