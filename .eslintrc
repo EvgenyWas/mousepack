@@ -12,7 +12,7 @@
     "vue/no-v-text-v-html-on-component": 0,
     "vue/multi-word-component-names": 0,
     "vue/no-multiple-template-root": 0,
-    "vue/max-attributes-per-line": ["error", { "singleline": { "max": 3 } }],
+    "vue/max-attributes-per-line": ["error", { "singleline": { "max": 5 } }],
     "new-cap": 2,
     "object-property-newline": 0,
     "no-console": 0,
