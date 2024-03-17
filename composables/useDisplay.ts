@@ -18,6 +18,7 @@ export default function useDisplay() {
   const xxl = computed<boolean>(() => width.value >= GRID.xxl);
 
   const mdAndDown = computed<boolean>(() => width.value <= GRID.md);
+  const lgAndUp = computed<boolean>(() => width.value >= GRID.lg);
 
   const onResize = () => {
     const { innerWidth, innerHeight } = window;
@@ -25,7 +26,7 @@ export default function useDisplay() {
     height.value = innerHeight;
   };
 
-  onMounted(() => {
+  onBeforeMount(() => {
     onResize();
     window.addEventListener('resize', onResize);
   });
@@ -39,6 +40,7 @@ export default function useDisplay() {
     md,
     mdAndDown,
     lg,
+    lgAndUp,
     xl,
     xxl,
   };
