@@ -8,7 +8,7 @@
       </ul>
     </nav>
 
-    <BurgerMenu :expanded="isMenuOpen" class="header-burger-menu col-1" name="navigation" @click="toggleMenu" />
+    <BurgerMenu :expanded="isMenuOpen" class="header-burger-menu" name="navigation" @click="toggleMenu" />
 
     <div class="header-logo">
       <IconHeaderShape class="header-logo-shape" />
@@ -161,6 +161,7 @@ $nav-links: 4;
     background-color: $primary;
     transition: all 500ms ease-out;
     transition-delay: 200ms;
+    overflow: hidden;
 
     &-item {
       width: fit-content;
@@ -168,7 +169,7 @@ $nav-links: 4;
       transition:
         transform 500ms $header-item-transition-cubic,
         opacity 600ms $header-item-transition-cubic;
-      transform: scale(1.15) translateY(-50px);
+      transform: scale(1.15);
 
       @for $i from 1 through $nav-links {
         &:nth-child(#{$i}) {
@@ -197,7 +198,7 @@ $nav-links: 4;
 
       .header-nav-item {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform: scale(1);
 
         @for $i from 1 through $nav-links {
           &:nth-child(#{$i}) {
@@ -370,6 +371,7 @@ $nav-links: 4;
       z-index: 10;
       height: 100%;
       background-color: transparent;
+      transition: none;
 
       &-items {
         position: static;
@@ -385,6 +387,7 @@ $nav-links: 4;
       &-item {
         opacity: 1;
         transform: none;
+        transition: none;
       }
 
       &-link {
