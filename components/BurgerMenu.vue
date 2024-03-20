@@ -28,8 +28,6 @@ const ariaLabel = computed<string>(() => (props.expanded ? 'close' : 'open') + `
 <style scoped lang="scss">
 $menu-width: 39px;
 $menu-height: 29px;
-$menu-padding-x: 0;
-$menu-padding-y: 0;
 $line-height: 5px;
 
 .hamburger-menu {
@@ -37,7 +35,7 @@ $line-height: 5px;
   box-sizing: content-box;
   width: $menu-width;
   height: $menu-height;
-  padding: $menu-padding-y $menu-padding-x;
+  padding: 0;
   cursor: pointer;
   background: none;
   border: none;
@@ -45,25 +43,25 @@ $line-height: 5px;
 
   & > span {
     position: absolute;
-    left: $menu-padding-x;
+    left: 0;
     display: block;
-    width: calc(100% - $menu-padding-x * 2);
+    width: 100%;
     height: $line-height;
     background-color: $white;
     opacity: 1;
     transition: 250ms ease-in-out;
 
     &:nth-child(1) {
-      top: $menu-padding-y;
+      top: 0;
     }
 
     &:nth-child(2),
     &:nth-child(3) {
-      top: math.div($menu-height - $line-height, 2) + $menu-padding-y;
+      top: math.div($menu-height - $line-height, 2);
     }
 
     &:nth-child(4) {
-      top: $menu-height - $line-height + $menu-padding-y;
+      top: $menu-height - $line-height;
     }
   }
 
@@ -71,8 +69,8 @@ $line-height: 5px;
     & > span {
       &:nth-child(1),
       &:nth-child(4) {
-        top: math.div($menu-height - $line-height, 2) + $menu-padding-y;
-        left: calc(50% + $menu-padding-x);
+        top: math.div($menu-height - $line-height, 2);
+        left: 50%;
         width: 0%;
       }
 
