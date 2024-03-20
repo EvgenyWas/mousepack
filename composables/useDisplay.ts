@@ -26,7 +26,7 @@ export default function useDisplay() {
     height.value = innerHeight;
   };
 
-  onBeforeMount(() => {
+  onMounted(() => {
     onResize();
     window.addEventListener('resize', onResize);
   });

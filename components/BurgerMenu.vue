@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="{ '--expanded': expanded }"
+    :class="{ expanded }"
     :aria-expanded="expanded"
     :aria-label="ariaLabel"
     :aria-controls="name"
@@ -28,8 +28,8 @@ const ariaLabel = computed<string>(() => (props.expanded ? 'close' : 'open') + `
 <style scoped lang="scss">
 $menu-width: 39px;
 $menu-height: 29px;
-$menu-padding-x: 0px;
-$menu-padding-y: 0px;
+$menu-padding-x: 0;
+$menu-padding-y: 0;
 $line-height: 5px;
 
 .hamburger-menu {
@@ -67,7 +67,7 @@ $line-height: 5px;
     }
   }
 
-  &.--expanded {
+  &.expanded {
     & > span {
       &:nth-child(1),
       &:nth-child(4) {
