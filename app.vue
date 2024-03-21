@@ -193,7 +193,7 @@ $nav-links: 4;
     }
 
     &.expanded {
-      height: calc(100vh - 70px);
+      height: 100vh;
       transition: all 300ms ease-in;
       transition-delay: 250ms;
 
