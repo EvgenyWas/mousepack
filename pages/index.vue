@@ -78,6 +78,8 @@ const brands = [
 const projects = [
   { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
   { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
+  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
+  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
 ];
 
 const { lgAndUp } = useDisplay();
@@ -183,7 +185,11 @@ onUnmounted(() => clearInterval(brandsIntervalID));
   }
 
   &-items {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+  }
+
+  &-item {
+    margin-bottom: 32px;
   }
 
   &-link {
@@ -243,6 +249,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
   .brands {
     &-items {
       max-height: none;
+      margin-bottom: 25px;
     }
 
     &-item {
