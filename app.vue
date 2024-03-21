@@ -117,6 +117,7 @@ useServerSeoMeta({
   twitterImageAlt: 'MousePack',
   twitterCard: 'summary_large_image',
   twitterSite: '@AlexBradt',
+  robots: { noindex: true }, // TODO: remove when go to production
 });
 
 const openMenu = () => {
