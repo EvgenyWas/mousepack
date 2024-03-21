@@ -31,7 +31,7 @@ defineProps<Props>();
 
   &-image {
     aspect-ratio: 3 / 2;
-    background-color: grey;
+    background-color: $success;
     border-radius: 25px;
   }
 

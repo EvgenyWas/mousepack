@@ -159,10 +159,10 @@ $nav-links: 4;
     top: 70px;
     z-index: 5;
     height: 0;
+    overflow: hidden;
     background-color: $primary;
     transition: all 500ms ease-out;
     transition-delay: 200ms;
-    overflow: hidden;
 
     &-item {
       width: fit-content;
@@ -387,8 +387,8 @@ $nav-links: 4;
 
       &-item {
         opacity: 1;
-        transform: none;
         transition: none;
+        transform: none;
       }
 
       &-link {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section style="height: 100vh; background-color: grey">
+    <section style="height: 100vh; background-color: #808080">
       <!-- Video -->
     </section>
 
@@ -197,11 +197,11 @@ onUnmounted(() => clearInterval(brandsIntervalID));
     line-height: 28px;
     color: $typography;
     background:
-      $gradient calc(var(--_p, 0%) - 100%) 0%,
-      $gradient calc(200% - var(--_p, 0%)) 0%,
-      $gradient calc(var(--_p, 0%) - 100%) 100%,
-      $gradient calc(200% - var(--_p, 0%)) 100%;
-    background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+      $gradient calc(var(--gradient-width, 0%) - 100%) 0%,
+      $gradient calc(200% - var(--gradient-width, 0%)) 0%,
+      $gradient calc(var(--gradient-width, 0%) - 100%) 100%,
+      $gradient calc(200% - var(--gradient-width, 0%)) 100%;
+    background-size: 50.5% calc(var(--gradient-width, 0%) / 2 + 0.5%);
     border: 1px solid $typography;
     border-radius: 34px;
     transition:
@@ -209,7 +209,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
       background-position 0s 400ms;
 
     &:hover {
-      --_p: 100%;
+      --gradient-width: 100%;
 
       border-color: $warning;
       transition:

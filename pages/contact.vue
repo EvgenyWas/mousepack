@@ -8,5 +8,3 @@ definePageMeta({
   description: 'MousePack contact',
 });
 </script>
-
-<style scoped></style>
