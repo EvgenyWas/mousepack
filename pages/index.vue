@@ -198,7 +198,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
     width: fit-content;
     padding: 6px 28px;
     margin: 0 auto;
-    font-size: 20;
+    font-size: 20px;
     font-weight: 700;
     line-height: 28px;
     color: $typography;
@@ -207,7 +207,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
       $gradient calc(200% - var(--gradient-width, 0%)) 0%,
       $gradient calc(var(--gradient-width, 0%) - 100%) 100%,
       $gradient calc(200% - var(--gradient-width, 0%)) 100%;
-    background-size: 50.5% calc(var(--gradient-width, 0%) / 2 + 0.5%);
+    background-size: 50% calc(var(--gradient-width, 0%) / 2);
     border: 1px solid $typography;
     border-radius: 34px;
     transition:
