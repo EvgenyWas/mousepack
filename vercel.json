@@ -1,0 +1,5 @@
+{
+  "buildCommand": "pnpm generate",
+  "outputDirectory": ".output/public",
+  "installCommand": "pnpm install"
+}
