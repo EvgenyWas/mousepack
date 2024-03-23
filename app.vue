@@ -10,12 +10,10 @@
 
     <BurgerMenu :expanded="isMenuOpen" class="header-burger-menu" name="navigation" @click="toggleMenu" />
 
-    <div class="header-logo">
-      <IconHeaderShape class="header-logo-shape" />
-      <NuxtLink to="/" class="header-logo-link" aria-label="go to home page" @click="closeMenu">
-        <IconLogo class="header-logo-icon" />
-      </NuxtLink>
-    </div>
+    <IconHeaderShape class="header-logo-shape" />
+    <NuxtLink to="/" class="header-logo-link" aria-label="go to home page" @click="closeMenu">
+      <IconLogo class="header-logo-icon" />
+    </NuxtLink>
   </header>
 
   <main class="mousepack-main">
@@ -157,7 +155,7 @@ $nav-links: 4;
   &-nav {
     position: relative;
     top: 70px;
-    z-index: 5;
+    z-index: 100;
     height: 0;
     overflow: hidden;
     background-color: $primary;
@@ -230,17 +228,13 @@ $nav-links: 4;
   }
 
   &-logo {
-    position: absolute;
-    bottom: $header-shape-bottom;
-    left: 50%;
-    z-index: 5;
-    width: 100%;
-    max-width: $header-shape-width;
-    transform: translate(-50%, 100%);
-
     &-shape {
       position: absolute;
-      left: 0;
+      bottom: $header-shape-bottom;
+      z-index: 5;
+      left: 50%;
+      max-width: $header-shape-width;
+      transform: translate(-50%, 100%);
       order: 2;
       width: 100%;
       color: $primary;
@@ -248,7 +242,8 @@ $nav-links: 4;
 
     &-link {
       position: absolute;
-      top: 10px;
+      z-index: 105;
+      top: 35px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -369,7 +364,6 @@ $nav-links: 4;
     &-nav {
       position: relative;
       top: 0;
-      z-index: 10;
       height: 100%;
       background-color: transparent;
       transition: none;
@@ -426,11 +420,13 @@ $nav-links: 4;
     }
 
     &-logo {
-      bottom: $header-shape-bottom * 1.1;
-      max-width: $header-shape-width * 1.1;
+      &-shape {
+        bottom: $header-shape-bottom * 1.1;
+        max-width: $header-shape-width * 1.1;
+      }
 
       &-link {
-        top: 20px;
+        top: 45px;
       }
 
       &-icon {
@@ -504,8 +500,10 @@ $nav-links: 4;
     }
 
     &-logo {
-      bottom: $header-shape-bottom * 1.2;
-      max-width: $header-shape-width * 1.2;
+      &-shape {
+        bottom: $header-shape-bottom * 1.2;
+        max-width: $header-shape-width * 1.2;
+      }
 
       &-icon {
         width: 130px;
@@ -548,11 +546,13 @@ $nav-links: 4;
 @include media-breakpoint-up(xl) {
   .header {
     &-logo {
-      bottom: $header-shape-bottom * 1.3;
-      max-width: $header-shape-width * 1.3;
+      &-shape {
+        bottom: $header-shape-bottom * 1.3;
+        max-width: $header-shape-width * 1.3;
+      }
 
       &-link {
-        top: 25px;
+        top: 45px;
       }
 
       &-icon {
