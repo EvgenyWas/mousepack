@@ -1,11 +1,13 @@
 @mixin typography($font-size, $line-height, $font-weight) {
-  @if ($font-size) {
+  @if $font-size {
     font-size: $font-size;
   }
-  @if ($line-height) {
+
+  @if $line-height {
     line-height: $line-height;
   }
-  @if ($font-weight) {
+
+  @if $font-weight {
     font-weight: $font-weight;
   }
 }
@@ -13,9 +15,11 @@
 // Utility classes
 .text-h2 {
   @include typography(36px, 48px, 700);
+
   @include media-breakpoint-up(lg) {
     @include typography(40px, 54px, null);
   }
+
   @include media-breakpoint-up(xxl) {
     @include typography(48px, 66px, null);
   }
@@ -23,6 +27,7 @@
 
 .text-subtitle {
   @include typography(16px, 30px, 400);
+
   @include media-breakpoint-up(lg) {
     @include typography(20px, null, null);
   }

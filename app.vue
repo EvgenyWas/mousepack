@@ -231,20 +231,20 @@ $nav-links: 4;
     &-shape {
       position: absolute;
       bottom: $header-shape-bottom;
-      z-index: 5;
       left: 50%;
-      max-width: $header-shape-width;
-      transform: translate(-50%, 100%);
+      z-index: 5;
       order: 2;
       width: 100%;
+      max-width: $header-shape-width;
       color: $primary;
+      transform: translate(-50%, 100%);
     }
 
     &-link {
       position: absolute;
-      z-index: 105;
       top: 35px;
       left: 50%;
+      z-index: 105;
       transform: translateX(-50%);
     }
 
