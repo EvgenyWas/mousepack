@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pnpm generate",
+  "outputDirectory": ".output/public",
+  "installCommand": "pnpm install",
+  "git": {
+    "deploymentEnabled": {
+      "dev": false,
+      "main": true
+    }
+  }
+}
