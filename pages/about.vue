@@ -59,6 +59,10 @@ useHead({
     color: $typography;
     text-align: center;
   }
+
+  &-subtitle {
+    text-align: center;
+  }
 }
 
 @include media-breakpoint-up(sm) {
