@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div id="home-page">
     <section style="height: 100vh; background-color: #808080">
       <!-- Video -->
     </section>
 
     <section class="brands">
       <div class="container">
-        <h2 class="brands-title">Brands we worked with</h2>
+        <h2 class="brands-title text-h2">Brands we worked with</h2>
         <TransitionGroup :duration="600" tag="div" name="fade" class="brands-items row">
           <div
             v-for="(brand, index) in brands"
@@ -22,8 +22,8 @@
     </section>
 
     <section class="projects container">
-      <h2 class="projects-title row">Augmented Reality from Concept to Conclusion</h2>
-      <p class="projects-desc row">
+      <h2 class="projects-title text-h2 row">Augmented Reality from Concept to Conclusion</h2>
+      <p class="projects-desc text-subtitle row">
         A collection of talented creators with a shared passion for innovating with Augmented Reality. Based in NYC, our
         studio delivers distinguished work for leading brands across the globe.
         <NuxtLink class="projects-desc-link" to="/about"><strong>Find out more about us.</strong></NuxtLink>
@@ -130,9 +130,6 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 
   &-title {
     margin: 0 0 10px;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 48px;
     color: $white;
     text-align: center;
   }
@@ -161,17 +158,12 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 
   &-title {
     margin: 0 auto 15px;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 48px;
     color: $typography;
     text-align: center;
   }
 
   &-desc {
     margin: 0 auto 30px;
-    font-size: 16px;
-    line-height: 30px;
     color: $typography;
     text-align: center;
 
@@ -263,14 +255,11 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 
     &-title {
       width: 80%;
-      font-size: 40px;
-      line-height: 54px;
     }
 
     &-desc {
       width: 80%;
       margin-bottom: 75px;
-      font-size: 20px;
     }
 
     &-items {
@@ -283,15 +272,6 @@ onUnmounted(() => clearInterval(brandsIntervalID));
   .brands {
     &-title {
       margin: 0 0 50px;
-      font-size: 48px;
-      line-height: 64px;
-    }
-  }
-
-  .projects {
-    &-title {
-      font-size: 48px;
-      line-height: 66px;
     }
   }
 }
