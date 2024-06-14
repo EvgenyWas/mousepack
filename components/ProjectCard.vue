@@ -55,11 +55,6 @@ defineProps<Props>();
       margin-bottom: 8px;
     }
 
-    &-title {
-      font-size: 30px;
-      line-height: 40px;
-    }
-
     &-subtitle {
       font-size: 20px;
       line-height: 28px;

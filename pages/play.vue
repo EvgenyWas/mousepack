@@ -1,5 +1,7 @@
 <template>
-  <div style="height: 100vh"></div>
+  <div style="height: 100vh">
+    <h1 class="title">MousePack Play</h1>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -8,3 +10,10 @@ definePageMeta({
   description: 'MousePack play',
 });
 </script>
+
+<style scope lang="scss">
+.title {
+  position: absolute;
+  left: -100000000px;
+}
+</style>
