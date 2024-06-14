@@ -1,12 +1,14 @@
 <template>
   <div id="home-page">
-    <section style="height: 100vh; background-color: #808080">
+    <h1 class="title">MousePack</h1>
+
+    <section style="background-color: #808080; aspect-ratio: 16 / 9" class="container">
       <!-- Video -->
     </section>
 
     <section class="brands">
       <div class="container">
-        <h2 class="brands-title text-h2">Brands we worked with</h2>
+        <h2 class="brands-title text-h2">Brands we’ve teamed up with</h2>
         <TransitionGroup :duration="600" tag="div" name="fade" class="brands-items row">
           <div
             v-for="(brand, index) in brands"
@@ -22,10 +24,9 @@
     </section>
 
     <section class="projects container">
-      <h2 class="projects-title text-h2 row">Augmented Reality from Concept to Conclusion</h2>
+      <h2 class="projects-title text-h2 row">Rapidly delivering highly creative augmented reality experiences</h2>
       <p class="projects-desc text-subtitle row">
-        A collection of talented creators with a shared passion for innovating with Augmented Reality. Based in NYC, our
-        studio delivers distinguished work for leading brands across the globe.
+        Meet MousePack. A team of creators with a shared passion for innovating with Augmented Reality.
         <NuxtLink class="projects-desc-link" to="/about"><strong>Find out more about us.</strong></NuxtLink>
       </p>
       <div class="projects-items row">
@@ -33,11 +34,8 @@
           v-for="project in projects"
           v-bind="project"
           :key="project.subtitle"
-          class="projects-item col-12 col-sm-6 col-lg-4"
+          class="projects-item col-12 col-sm-6"
         />
-      </div>
-      <div class="row">
-        <NuxtLink class="projects-link" to="/work">SEE ALL PROJECTS</NuxtLink>
       </div>
     </section>
   </div>
@@ -76,10 +74,10 @@ const brands = [
 ];
 
 const projects = [
-  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
-  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
-  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
-  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/' },
+  { image: '', title: 'Niantic', subtitle: 'Cloud Templates', to: '/work/niantic-cloud-templates' },
+  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/work/niantic-cardboard-crashers' },
+  { image: '', title: 'Snapchat', subtitle: 'ACL', to: '/work/snapchat-acl' },
+  { image: '', title: 'Snapchat', subtitle: 'Gopher', to: '/work/snapchat-gopher' },
 ];
 
 const { lgAndUp } = useDisplay();
@@ -124,6 +122,11 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 </script>
 
 <style scoped lang="scss">
+.title {
+  position: absolute;
+  left: -100000000px;
+}
+
 .brands {
   padding: 30px 0;
   background-color: $primary;
@@ -147,6 +150,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
     }
 
     &-icon {
+      max-width: 150px;
       width: 100%;
     }
   }
@@ -163,6 +167,7 @@ onUnmounted(() => clearInterval(brandsIntervalID));
   }
 
   &-desc {
+    justify-content: center;
     margin: 0 auto 30px;
     color: $typography;
     text-align: center;
@@ -182,38 +187,6 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 
   &-item {
     margin-bottom: 32px;
-  }
-
-  &-link {
-    $gradient: linear-gradient($warning 0 0) no-repeat;
-
-    width: fit-content;
-    padding: 6px 28px;
-    margin: 0 auto;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 28px;
-    color: $typography;
-    background:
-      $gradient calc(var(--gradient-width, 0%) - 100%) 0%,
-      $gradient calc(200% - var(--gradient-width, 0%)) 0%,
-      $gradient calc(var(--gradient-width, 0%) - 100%) 100%,
-      $gradient calc(200% - var(--gradient-width, 0%)) 100%;
-    background-size: 50% calc(var(--gradient-width, 0%) / 2);
-    border: 1px solid $typography;
-    border-radius: 34px;
-    transition:
-      background-size 400ms,
-      background-position 0s 400ms;
-
-    &:hover {
-      --gradient-width: 100%;
-
-      border-color: $warning;
-      transition:
-        background-position 400ms,
-        background-size 0s;
-    }
   }
 }
 
@@ -246,6 +219,11 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 
     &-item {
       transition: none;
+
+      &-icon {
+        max-height: 140px;
+        padding: 20px;
+      }
     }
   }
 

@@ -18,6 +18,7 @@ export default function useDisplay() {
   const xxl = computed<boolean>(() => width.value >= GRID.xxl);
 
   const mdAndDown = computed<boolean>(() => width.value <= GRID.md);
+  const lgAndDown = computed<boolean>(() => width.value <= GRID.lg);
   const lgAndUp = computed<boolean>(() => width.value >= GRID.lg);
 
   const onResize = () => {
@@ -40,6 +41,7 @@ export default function useDisplay() {
     md,
     mdAndDown,
     lg,
+    lgAndDown,
     lgAndUp,
     xl,
     xxl,
