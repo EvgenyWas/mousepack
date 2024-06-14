@@ -2,7 +2,7 @@
   <div id="home-page">
     <h1 class="title">MousePack</h1>
 
-    <section style="background-color: #808080; aspect-ratio: 16 / 9" class="container">
+    <section style=" aspect-ratio: 16 / 9;background-color: #808080" class="container">
       <!-- Video -->
     </section>
 
@@ -150,8 +150,8 @@ onUnmounted(() => clearInterval(brandsIntervalID));
     }
 
     &-icon {
-      max-width: 150px;
       width: 100%;
+      max-width: 150px;
     }
   }
 }

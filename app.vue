@@ -332,9 +332,9 @@ $nav-links: 4;
       width: 100%;
       height: fit-content;
       padding: 13px;
+      cursor: text;
       background-color: $white;
       border-radius: 14px;
-      cursor: text;
     }
 
     &-submit {
@@ -354,13 +354,13 @@ $nav-links: 4;
       }
 
       .submit-loader {
+        box-sizing: border-box;
+        display: inline-block;
         width: 20px;
         height: 20px;
         border: 3px solid $white;
         border-bottom-color: transparent;
         border-radius: 50%;
-        display: inline-block;
-        box-sizing: border-box;
         animation: rotation 1s linear infinite;
       }
 
@@ -368,6 +368,7 @@ $nav-links: 4;
         0% {
           transform: rotate(0deg);
         }
+
         100% {
           transform: rotate(360deg);
         }
@@ -375,13 +376,13 @@ $nav-links: 4;
     }
 
     &-confirmation {
-      color: $warning;
       font-weight: 700;
+      color: $warning;
     }
 
     &-error {
-      color: $secondary;
       font-weight: 700;
+      color: $secondary;
     }
   }
 
