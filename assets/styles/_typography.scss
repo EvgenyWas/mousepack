@@ -14,14 +14,14 @@
 
 // Utility classes
 .text-h2 {
-  @include typography(36px, 48px, 700);
+  @include typography(28px, 40px, 700);
 
   @include media-breakpoint-up(lg) {
-    @include typography(40px, 54px, null);
+    @include typography(32px, 44px, null);
   }
 
   @include media-breakpoint-up(xxl) {
-    @include typography(48px, 66px, null);
+    @include typography(40px, 52px, null);
   }
 }
 
