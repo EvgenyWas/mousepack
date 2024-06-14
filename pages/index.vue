@@ -2,7 +2,7 @@
   <div id="home-page">
     <h1 class="title">MousePack</h1>
 
-    <section style="background-color: #808080" class="container">
+    <section style="aspect-ratio: 16 / 9; background-color: #808080" class="container">
       <!-- Video -->
     </section>
 
