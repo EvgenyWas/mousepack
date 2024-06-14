@@ -30,9 +30,10 @@
           </NuxtLink>
         </div>
 
-        <form class="footer-form col-12 col-md-6 col-lg-4" @submit.prevent>
+        <form class="footer-form col-12 col-md-6 col-lg-4" @submit.prevent="subscribe">
           <label class="footer-form-label" for="subscribe-input">Join MousePack newsletter:</label>
           <input
+            v-if="!isSubscribed && !isSubscribingError"
             id="subscribe-input"
             class="footer-form-input"
             type="email"
@@ -43,7 +44,12 @@
             maxlength="256"
             required
           />
-          <input class="footer-form-submit" type="submit" value="Subscribe" />
+          <button v-if="!isSubscribed && !isSubscribingError" class="footer-form-submit" type="submit">
+            <span v-if="isSubscribing" class="submit-loader" />
+            <span v-else class="submit-text">Subscribe</span>
+          </button>
+          <p v-if="isSubscribed" class="footer-form-confirmation">You're subscribed!</p>
+          <p v-if="isSubscribingError" class="footer-form-error">Oops! Something went wrong...</p>
         </form>
 
         <div class="footer-socials col-12 col-md-6 col-lg-4">
@@ -82,7 +88,7 @@ import IconLinkedIn from '~/components/icons/IconLinkedIn.vue';
 import BurgerMenu from '~/components/BurgerMenu.vue';
 
 const NAV_LINKS = [
-  { name: 'Work', to: '/work' },
+  { name: 'Home', to: '/' },
   { name: 'Play', to: '/play' },
   { name: 'About', to: '/about' },
   { name: 'Contact', to: '/contact' },
@@ -90,9 +96,12 @@ const NAV_LINKS = [
 
 const GET_IN_TOUCH_MAIL = 'alex@mousepack.com';
 
-const { mdAndDown } = useDisplay();
+const { lgAndDown } = useDisplay();
 
 const isMenuOpen = ref<boolean>(false);
+const isSubscribing = ref<boolean>(false);
+const isSubscribed = ref<boolean>(false);
+const isSubscribingError = ref<boolean>(false);
 
 useServerHead({
   link: [
@@ -130,10 +139,23 @@ const closeMenu = () => {
 
 const toggleMenu = () => (isMenuOpen.value ? closeMenu() : openMenu());
 
-watch(() => mdAndDown.value, closeMenu);
+const subscribe = async () => {
+  try {
+    isSubscribing.value = true;
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    isSubscribed.value = true;
+  } catch (error) {
+    isSubscribingError.value = true;
+  } finally {
+    isSubscribing.value = false;
+  }
+};
+
+watch(() => lgAndDown.value, closeMenu);
 </script>
 
 <style scoped lang="scss">
+$header-height: 60px;
 $header-shape-width: 390px;
 $header-shape-bottom: 40px;
 $header-item-transition-cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
@@ -142,7 +164,7 @@ $nav-links: 4;
 .mousepack {
   &-header {
     position: relative;
-    height: 70px;
+    height: $header-height;
     background-color: $primary;
   }
 
@@ -154,7 +176,7 @@ $nav-links: 4;
 .header {
   &-nav {
     position: relative;
-    top: 70px;
+    top: $header-height - 1px;
     z-index: 100;
     height: 0;
     overflow: hidden;
@@ -222,7 +244,7 @@ $nav-links: 4;
 
   &-burger-menu {
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 20px;
     z-index: 15;
   }
@@ -250,7 +272,7 @@ $nav-links: 4;
 
     &-icon {
       order: 1;
-      width: 110px;
+      width: 100px;
     }
   }
 }
@@ -274,7 +296,7 @@ $nav-links: 4;
     &-title {
       font-size: 30px;
       line-height: 40px;
-      color: $warning;
+      color: $white;
       text-align: center;
     }
 
@@ -312,10 +334,7 @@ $nav-links: 4;
       padding: 13px;
       background-color: $white;
       border-radius: 14px;
-
-      &::placeholder {
-        font-weight: 700;
-      }
+      cursor: text;
     }
 
     &-submit {
@@ -328,6 +347,41 @@ $nav-links: 4;
       text-align: center;
       background-color: $secondary;
       border-radius: 14px;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        box-shadow: rgba($typography, 0.15) 3px 3px 4px;
+      }
+
+      .submit-loader {
+        width: 20px;
+        height: 20px;
+        border: 3px solid $white;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    &-confirmation {
+      color: $warning;
+      font-weight: 700;
+    }
+
+    &-error {
+      color: $secondary;
+      font-weight: 700;
     }
   }
 
@@ -361,72 +415,10 @@ $nav-links: 4;
 
 @include media-breakpoint-up(md) {
   .header {
-    &-nav {
-      position: relative;
-      top: 0;
-      height: 100%;
-      background-color: transparent;
-      transition: none;
-
-      &-items {
-        position: static;
-        flex-direction: row;
-        gap: 0;
-        justify-content: flex-end;
-        height: 100%;
-        margin-right: calc(-0.5 * var(--grid-gutter-x));
-        margin-left: calc(-0.5 * var(--grid-gutter-x));
-        transform: none;
-      }
-
-      &-item {
-        opacity: 1;
-        transition: none;
-        transform: none;
-      }
-
-      &-link {
-        position: relative;
-        font-size: 20px;
-        line-height: 26px;
-
-        &::before {
-          position: absolute;
-          right: auto;
-          bottom: -5px;
-          left: 0;
-          width: 0;
-          height: 4px;
-          content: '';
-          background: $secondary;
-          transition: 300ms ease-in-out;
-        }
-
-        &:hover,
-        &.router-link-active {
-          color: $white;
-
-          &::before {
-            right: 0;
-            left: auto;
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    &-burger-menu {
-      display: none;
-    }
-
     &-logo {
       &-shape {
         bottom: $header-shape-bottom * 1.1;
         max-width: $header-shape-width * 1.1;
-      }
-
-      &-link {
-        top: 45px;
       }
 
       &-icon {
@@ -489,14 +481,67 @@ $nav-links: 4;
 @include media-breakpoint-up(lg) {
   .header {
     &-nav {
+      position: relative;
+      top: 0;
+      height: 100%;
+      background-color: transparent;
+      transition: none;
+
       &-items {
-        gap: 6px;
+        position: static;
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+        max-width: 35%;
+        height: 100%;
+        margin-left: auto;
+        transform: none;
+      }
+
+      &-item {
+        opacity: 1;
+        transition: none;
+        transform: none;
       }
 
       &-link {
-        font-size: 24px;
-        line-height: 32px;
+        position: relative;
+        font-size: 20px;
+        line-height: 28px;
+
+        &::before {
+          position: absolute;
+          right: auto;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 4px;
+          content: '';
+          background: $secondary;
+          transition: 300ms ease-in-out;
+        }
+
+        &:hover,
+        &.router-link-active {
+          color: $white;
+
+          &::before {
+            right: 0;
+            left: auto;
+            width: 100%;
+          }
+
+          &[href='/'] {
+            &::before {
+              display: none;
+            }
+          }
+        }
       }
+    }
+
+    &-burger-menu {
+      display: none;
     }
 
     &-logo {
@@ -535,6 +580,13 @@ $nav-links: 4;
       &-label {
         text-align: start;
       }
+
+      &-input,
+      &-submit {
+        height: 40px;
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
 
     &-socials {
@@ -549,10 +601,6 @@ $nav-links: 4;
       &-shape {
         bottom: $header-shape-bottom * 1.3;
         max-width: $header-shape-width * 1.3;
-      }
-
-      &-link {
-        top: 45px;
       }
 
       &-icon {
