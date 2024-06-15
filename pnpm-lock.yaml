@@ -16,6 +16,9 @@ dependencies:
     version: 4.3.0(vue@3.4.21)
 
 devDependencies:
+  '@cloudinary/url-gen':
+    specifier: ^1.19.0
+    version: 1.19.0
   '@nuxtjs/eslint-config-typescript':
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.57.0)(typescript@5.3.3)
@@ -421,6 +424,18 @@ packages:
     resolution: {integrity: sha512-lKN2XCfKCmpKb86a1tl4GIwsJYDy9TGuwjhDELLmpKygQhw8X2xR4dusgpC5Tg7q1pB96Eb0rBo81kxSILQMwA==}
     dependencies:
       mime: 3.0.0
+
+  /@cloudinary/transformation-builder-sdk@1.13.3:
+    resolution: {integrity: sha512-tBMpjcwBjUgINGm2lKodb1fe32yBeq2KTSD7TrrFPm2/dQOb7lKmVuDaDe89IPcV+QZbb1JY/ZWL9pZjUV4aKw==}
+    dependencies:
+      '@cloudinary/url-gen': 1.19.0
+    dev: true
+
+  /@cloudinary/url-gen@1.19.0:
+    resolution: {integrity: sha512-3WSqYAMEe8lcYMFmkNPhOfv6Ql76mpf8O7YEC+CCaoIYrfBubzzeF8yENCaZK9tFJEHvMepI+uWWfilNrz48XA==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.13.3
+    dev: true
 
   /@csstools/css-parser-algorithms@2.6.0(@csstools/css-tokenizer@2.2.3):
     resolution: {integrity: sha512-YfEHq0eRH98ffb5/EsrrDspVWAuph6gDggAE74ZtjecsmyyWpW768hOyiONa8zwWGbIWYfa2Xp4tRTrpQQ00CQ==}
