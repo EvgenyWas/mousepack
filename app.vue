@@ -5,7 +5,7 @@
         <li v-for="link in NAV_LINKS" :key="link.name" class="header-nav-item">
           <NuxtLink
             :to="link.to"
-            :class="{ 'header-nav-link--home': isHome }"
+            :class="{ 'header-nav-link-home': isHome }"
             class="header-nav-link"
             @click="closeMenu"
             >{{ link.name }}</NuxtLink
@@ -540,7 +540,7 @@ $nav-links: 4;
             width: 100%;
           }
 
-          &[href='/'].header-nav-link--home {
+          &[href='/'].header-nav-link-home {
             &::before {
               display: none;
             }
