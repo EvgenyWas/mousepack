@@ -170,7 +170,6 @@ onUnmounted(() => clearInterval(brandsIntervalID));
   aspect-ratio: 16 / 9;
   padding: 0;
   background-color: rgba($typography, 0.1);
-  background-color: red;
   margin-bottom: -5px;
 
   &-video {
