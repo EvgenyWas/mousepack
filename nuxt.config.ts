@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   devtools: {
     enabled: false,
   },
+  runtimeConfig: {
+    public: {
+      cloudinaryCloudName: process.env.NUXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    },
+  },
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     rootId: 'mousepack',

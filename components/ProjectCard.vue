@@ -1,7 +1,7 @@
 <template>
   <article class="project-card">
     <NuxtLink :to="to" class="project-card-link">
-      <img :src="image" :alt="subtitle" class="project-card-image" />
+      <img :src="image" :alt="subtitle" loading="lazy" class="project-card-image" />
       <h3 class="project-card-title">{{ title }}</h3>
       <p class="project-card-subtitle">{{ subtitle }}</p>
     </NuxtLink>
@@ -21,18 +21,28 @@ defineProps<Props>();
 
 <style scoped lang="scss">
 .project-card {
+  &-image {
+    aspect-ratio: 3 / 2;
+    background-color: rgba($success, 0.5);
+    border-radius: 25px;
+    transition: box-shadow 200ms ease-in-out;
+  }
+
+  &:hover {
+    transition: all 300ms ease-in-out;
+    scale: 1.05;
+
+    .project-card-image {
+      box-shadow: rgba($typography, 0.2) 0 8px 24px;
+    }
+  }
+
   &-link {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     color: $typography;
-  }
-
-  &-image {
-    aspect-ratio: 3 / 2;
-    background-color: $success;
-    border-radius: 25px;
   }
 
   &-title {

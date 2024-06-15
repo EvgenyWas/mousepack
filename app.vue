@@ -3,7 +3,13 @@
     <nav id="navigation" :class="{ expanded: isMenuOpen }" class="header-nav container-xxl">
       <ul class="header-nav-items row">
         <li v-for="link in NAV_LINKS" :key="link.name" class="header-nav-item">
-          <NuxtLink :to="link.to" class="header-nav-link" @click="closeMenu">{{ link.name }}</NuxtLink>
+          <NuxtLink
+            :to="link.to"
+            :class="{ 'header-nav-link-home': isHome }"
+            class="header-nav-link"
+            @click="closeMenu"
+            >{{ link.name }}</NuxtLink
+          >
         </li>
       </ul>
     </nav>
@@ -97,6 +103,7 @@ const NAV_LINKS = [
 const GET_IN_TOUCH_MAIL = 'alex@mousepack.com';
 
 const { lgAndDown } = useDisplay();
+const route = useRoute();
 
 const isMenuOpen = ref<boolean>(false);
 const isSubscribing = ref<boolean>(false);
@@ -118,7 +125,6 @@ useServerSeoMeta({
   ogLocale: 'en',
   ogImageUrl: '/favicon.png', // TODO
   ogImageAlt: 'MousePack',
-  ogVideo: '', // TODO
   ogType: 'website',
   twitterImage: '/favicon.png', // TODO
   twitterImageAlt: 'MousePack',
@@ -126,6 +132,8 @@ useServerSeoMeta({
   twitterSite: '@AlexBradt',
   robots: { noindex: true }, // TODO: remove when go to production
 });
+
+const isHome = computed<boolean>(() => route.path === '/');
 
 const openMenu = () => {
   isMenuOpen.value = true;
@@ -532,7 +540,7 @@ $nav-links: 4;
             width: 100%;
           }
 
-          &[href='/'] {
+          &[href='/'].header-nav-link-home {
             &::before {
               display: none;
             }
