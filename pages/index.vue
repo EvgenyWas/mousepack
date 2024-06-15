@@ -2,8 +2,11 @@
   <div id="home-page">
     <h1 class="title">MousePack</h1>
 
-    <section style="aspect-ratio: 16 / 9; background-color: #808080" class="container">
-      <!-- Video -->
+    <section class="reel container">
+      <video :controls="false" class="reel-video" autoplay loop muted>
+        <source :src="reelWebm" type="video/webm" />
+        <source :src="reelMp4" type="video/mp4" />
+      </video>
     </section>
 
     <section class="brands">
@@ -42,6 +45,10 @@
 </template>
 
 <script setup lang="ts">
+import { format, quality } from '@cloudinary/url-gen/actions/delivery';
+import { scale } from '@cloudinary/url-gen/actions/resize';
+import { videoMp4, videoWebm, webp } from '@cloudinary/url-gen/qualifiers/format';
+import { autoBest } from '@cloudinary/url-gen/qualifiers/quality';
 import SpriteBrands from '~/components/icons/SpriteBrands.vue';
 
 definePageMeta({
@@ -51,6 +58,15 @@ definePageMeta({
 
 const BRANDS_INTERVAL = 5000;
 const BRANDS_VISIBLE_NUMBER = 9;
+
+const { $cld } = useNuxtApp();
+
+const brandReel = $cld.video('brand-reel_rdvy5x');
+const reelWebm = brandReel.delivery(format(videoWebm())).toURL();
+const reelMp4 = brandReel.delivery(format(videoMp4())).toURL();
+
+const getProjectImage = (publicID: string): string =>
+  $cld.image(publicID).resize(scale().width(700)).delivery(quality(autoBest())).delivery(format(webp())).toURL();
 
 const brands = [
   { name: 'snapchat' },
@@ -74,10 +90,30 @@ const brands = [
 ];
 
 const projects = [
-  { image: '', title: 'Niantic', subtitle: 'Cloud Templates', to: '/work/niantic-cloud-templates' },
-  { image: '', title: 'Niantic', subtitle: 'Cardboard Crashers', to: '/work/niantic-cardboard-crashers' },
-  { image: '', title: 'Snapchat', subtitle: 'ACL', to: '/work/snapchat-acl' },
-  { image: '', title: 'Snapchat', subtitle: 'Gopher', to: '/work/snapchat-gopher' },
+  {
+    image: getProjectImage('Cloud_Thumbnial_hilpve'),
+    title: 'Niantic',
+    subtitle: 'Cloud Templates',
+    to: '/work/niantic-cloud-templates',
+  },
+  {
+    image: getProjectImage('Cardboardthumbnial_bx187p'),
+    title: 'Niantic',
+    subtitle: 'Cardboard Crashers',
+    to: '/work/niantic-cardboard-crashers',
+  },
+  {
+    image: getProjectImage('ACL_Thumbnail_femzdg'),
+    title: 'Live Nation',
+    subtitle: 'Austin City Limits',
+    to: '/work/live-nation-acl',
+  },
+  {
+    image: getProjectImage('LoveBirds_Thumb_klavdb'),
+    title: 'Snapchat',
+    subtitle: 'Love Birds',
+    to: '/work/snapchat-love-birds',
+  },
 ];
 
 const { lgAndUp } = useDisplay();
@@ -125,6 +161,22 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 .title {
   position: absolute;
   left: -100000000px;
+}
+
+.reel {
+  max-height: calc(100vh - 60px);
+  height: 100%;
+  width: auto;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  background-color: rgba($typography, 0.1);
+  background-color: red;
+  margin-bottom: -5px;
+
+  &-video {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .brands {

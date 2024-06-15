@@ -36,25 +36,25 @@
     <section class="capabilities container">
       <h2 class="capabilities-title text-h2 row">Capabilities</h2>
       <ul class="capabilities-list">
-        <li class="capabilities-item text-subtitle">Concepting and Development</li>
-        <li class="capabilities-item text-subtitle">2D and 3D Design</li>
-        <li class="capabilities-item text-subtitle">Storyboarding</li>
-        <li class="capabilities-item text-subtitle">2D and 3D Animation</li>
-        <li class="capabilities-item text-subtitle">UX and UI</li>
-        <li class="capabilities-item text-subtitle">Interactive Games</li>
-        <li class="capabilities-item text-subtitle">Augmented Reality Experiences</li>
-        <li class="capabilities-item text-subtitle">Hack-a-thons and Talks</li>
+        <li class="capabilities-list-item text-subtitle">Concepting and Development</li>
+        <li class="capabilities-list-item text-subtitle">2D and 3D Design</li>
+        <li class="capabilities-list-item text-subtitle">Storyboarding</li>
+        <li class="capabilities-list-item text-subtitle">2D and 3D Animation</li>
+        <li class="capabilities-list-item text-subtitle">UX and UI</li>
+        <li class="capabilities-list-item text-subtitle">Interactive Games</li>
+        <li class="capabilities-list-item text-subtitle">Augmented Reality Experiences</li>
+        <li class="capabilities-list-item text-subtitle">Hack-a-thons and Talks</li>
       </ul>
     </section>
 
     <section class="devices container">
       <h2 class="devices-title text-h2 row">Devices we built for</h2>
       <ul class="devices-list">
-        <li class="devices-item text-subtitle">Phone</li>
-        <li class="devices-item text-subtitle">Oculus Quest</li>
-        <li class="devices-item text-subtitle">Apple Vision Pro</li>
-        <li class="devices-item text-subtitle">Lenova Glasses</li>
-        <li class="devices-item text-subtitle">Snap Spectacles</li>
+        <li class="devices-list-item text-subtitle">Phone</li>
+        <li class="devices-list-item text-subtitle">Oculus Quest</li>
+        <li class="devices-list-item text-subtitle">Apple Vision Pro</li>
+        <li class="devices-list-item text-subtitle">Lenova Glasses</li>
+        <li class="devices-list-item text-subtitle">Snap Spectacles</li>
       </ul>
     </section>
   </div>
@@ -120,20 +120,20 @@ useHead({
 .capabilities {
   &-list {
     text-align: center;
-  }
 
-  &-item {
-    margin-bottom: 10px;
+    &-item {
+      margin-bottom: 10px;
+    }
   }
 }
 
 .devices {
   &-list {
     text-align: center;
-  }
 
-  &-item {
-    margin-bottom: 10px;
+    &-item {
+      margin-bottom: 10px;
+    }
   }
 }
 
