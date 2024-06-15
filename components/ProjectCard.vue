@@ -21,12 +21,19 @@ defineProps<Props>();
 
 <style scoped lang="scss">
 .project-card {
+  &-image {
+    aspect-ratio: 3 / 2;
+    background-color: rgba($success, 0.5);
+    border-radius: 25px;
+    transition: box-shadow 200ms ease-in-out;
+  }
+
   &:hover {
     transition: all 300ms ease-in-out;
     scale: 1.05;
 
     .project-card-image {
-      box-shadow: rgba($typography, 0.2) 0px 8px 24px;
+      box-shadow: rgba($typography, 0.2) 0 8px 24px;
     }
   }
 
@@ -36,13 +43,6 @@ defineProps<Props>();
     width: 100%;
     height: 100%;
     color: $typography;
-  }
-
-  &-image {
-    aspect-ratio: 3 / 2;
-    background-color: rgba($success, 0.5);
-    border-radius: 25px;
-    transition: box-shadow 200ms ease-in-out;
   }
 
   &-title {

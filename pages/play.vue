@@ -64,9 +64,8 @@ const items: Array<PlayItem> = [
       margin-bottom: 20px;
 
       &-img {
-        margin: 0 auto;
-
         height: 100%;
+        margin: 0 auto;
         border-radius: 16px;
       }
     }

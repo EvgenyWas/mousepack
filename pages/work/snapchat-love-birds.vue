@@ -75,8 +75,8 @@ const mechanicMp4 = mechanicVideo.delivery(format(videoMp4())).toURL();
 
 .promo {
   &-video {
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
     margin-bottom: 32px;
     border-radius: 36px;
   }
@@ -84,8 +84,8 @@ const mechanicMp4 = mechanicVideo.delivery(format(videoMp4())).toURL();
 
 .mechanic {
   &-video {
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
     border-radius: 36px;
   }
 

@@ -164,13 +164,13 @@ onUnmounted(() => clearInterval(brandsIntervalID));
 }
 
 .reel {
-  max-height: calc(100vh - 60px);
-  height: 100%;
   width: auto;
+  height: 100%;
+  max-height: calc(100vh - 60px);
   aspect-ratio: 16 / 9;
   padding: 0;
-  background-color: rgba($typography, 0.1);
   margin-bottom: -5px;
+  background-color: rgba($typography, 0.1);
 
   &-video {
     width: 100%;

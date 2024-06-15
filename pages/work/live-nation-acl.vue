@@ -73,8 +73,8 @@ const animationMp4 = animationVideo.delivery(format(videoMp4())).toURL();
 
 .announcment {
   &-video {
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
     margin-bottom: 32px;
     border-radius: 36px;
   }
@@ -82,8 +82,8 @@ const animationMp4 = animationVideo.delivery(format(videoMp4())).toURL();
 
 .animation {
   &-video {
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
     border-radius: 36px;
   }
 
