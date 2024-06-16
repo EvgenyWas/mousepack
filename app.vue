@@ -119,6 +119,13 @@ useServerHead({
     { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon-180x180.png' },
   ],
   htmlAttrs: { lang: 'en' },
+  script: [
+    {
+      id: 'mcjs',
+      innerHTML:
+        '!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/57d2fe31cc10ac806225f3381/64cd9b7f097f750cdfff98a54.js");");',
+    },
+  ],
 });
 
 useServerSeoMeta({
