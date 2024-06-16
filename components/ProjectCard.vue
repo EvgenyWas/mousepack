@@ -23,10 +23,10 @@ defineProps<Props>();
 .project-card {
   &-image {
     aspect-ratio: 3 / 2;
+    object-fit: cover;
     background-color: rgba($success, 0.5);
     border-radius: 25px;
     transition: box-shadow 200ms ease-in-out;
-    object-fit: cover;
   }
 
   &:hover {
