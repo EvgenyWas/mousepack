@@ -3,7 +3,7 @@
     <h1 class="title">MousePack</h1>
 
     <section class="reel container">
-      <video :controls="false" class="reel-video" autoplay loop muted>
+      <video class="reel-video" autoplay loop muted playsinline>
         <source :src="reelWebm" type="video/webm" />
         <source :src="reelMp4" type="video/mp4" />
       </video>
