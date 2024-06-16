@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       cloudinaryCloudName: process.env.NUXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      mailchimpPopupSrc: process.env.NUXT_PUBLIC_MAILCHIMP_POPUP_SRC,
     },
   },
   app: {

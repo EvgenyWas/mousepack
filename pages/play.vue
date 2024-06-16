@@ -20,8 +20,8 @@ import { autoEco } from '@cloudinary/url-gen/qualifiers/quality';
 import type { ImgHTMLAttributes } from 'vue';
 
 definePageMeta({
-  title: 'MousePack play',
-  description: 'MousePack play',
+  title: 'MousePack Play',
+  description: 'MousePack Play',
 });
 
 interface PlayItem {

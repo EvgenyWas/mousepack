@@ -36,27 +36,13 @@
           </NuxtLink>
         </div>
 
-        <form class="footer-form col-12 col-md-6 col-lg-4" @submit.prevent="subscribe">
-          <label class="footer-form-label" for="subscribe-input">Join MousePack newsletter:</label>
-          <input
-            v-if="!isSubscribed && !isSubscribingError"
-            id="subscribe-input"
-            class="footer-form-input"
-            type="email"
-            name="email"
-            placeholder="email"
-            autocomplete="off"
-            minlength="8"
-            maxlength="256"
-            required
-          />
-          <button v-if="!isSubscribed && !isSubscribingError" class="footer-form-submit" type="submit">
-            <span v-if="isSubscribing" class="submit-loader" />
+        <div class="footer-form col-12 col-md-6 col-lg-4">
+          <p class="footer-form-label" for="subscribe-input">Join MousePack newsletter:</p>
+          <button class="footer-form-submit" type="button" @click="subscribe">
+            <span v-if="isSubscribePopupLoading" class="submit-loader" />
             <span v-else class="submit-text">Subscribe</span>
           </button>
-          <p v-if="isSubscribed" class="footer-form-confirmation">You're subscribed!</p>
-          <p v-if="isSubscribingError" class="footer-form-error">Oops! Something went wrong...</p>
-        </form>
+        </div>
 
         <div class="footer-socials col-12 col-md-6 col-lg-4">
           <h3 class="footer-socials-title">Let’s be friends!</h3>
@@ -104,11 +90,10 @@ const GET_IN_TOUCH_MAIL = 'alex@mousepack.com';
 
 const { lgAndDown } = useDisplay();
 const route = useRoute();
+const config = useRuntimeConfig();
 
 const isMenuOpen = ref<boolean>(false);
-const isSubscribing = ref<boolean>(false);
-const isSubscribed = ref<boolean>(false);
-const isSubscribingError = ref<boolean>(false);
+const isSubscribePopupLoading = ref<boolean>(false);
 
 useServerHead({
   link: [
@@ -119,13 +104,6 @@ useServerHead({
     { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon-180x180.png' },
   ],
   htmlAttrs: { lang: 'en' },
-  script: [
-    {
-      id: 'mcjs',
-      innerHTML:
-        '!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/57d2fe31cc10ac806225f3381/64cd9b7f097f750cdfff98a54.js");");',
-    },
-  ],
 });
 
 useServerSeoMeta({
@@ -154,16 +132,12 @@ const closeMenu = () => {
 
 const toggleMenu = () => (isMenuOpen.value ? closeMenu() : openMenu());
 
-const subscribe = async () => {
-  try {
-    isSubscribing.value = true;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    isSubscribed.value = true;
-  } catch (error) {
-    isSubscribingError.value = true;
-  } finally {
-    isSubscribing.value = false;
-  }
+const subscribe = () => {
+  isSubscribePopupLoading.value = true;
+  useCookie('MCPopupClosed').value = null;
+  useCookie('MCPopupSubscribed').value = null;
+  useHead({ script: [{ key: Math.random().toString(16).slice(2), id: 'mcjs', src: config.public.mailchimpPopupSrc }] });
+  setTimeout(() => (isSubscribePopupLoading.value = false), 1000);
 };
 
 watch(() => lgAndDown.value, closeMenu);
@@ -342,16 +316,6 @@ $nav-links: 4;
       text-align: center;
     }
 
-    &-input {
-      grid-column: span 2;
-      width: 100%;
-      height: fit-content;
-      padding: 13px;
-      cursor: text;
-      background-color: $white;
-      border-radius: 14px;
-    }
-
     &-submit {
       grid-column: span 2;
       width: 100%;
@@ -388,16 +352,6 @@ $nav-links: 4;
           transform: rotate(360deg);
         }
       }
-    }
-
-    &-confirmation {
-      font-weight: 700;
-      color: $warning;
-    }
-
-    &-error {
-      font-weight: 700;
-      color: $secondary;
     }
   }
 
@@ -471,9 +425,8 @@ $nav-links: 4;
       font-size: 20px;
       line-height: 28px;
 
-      &-input {
-        grid-column: span 1;
-        padding: 9px;
+      &-label {
+        text-align: left;
       }
 
       &-submit {
@@ -597,7 +550,6 @@ $nav-links: 4;
         text-align: start;
       }
 
-      &-input,
       &-submit {
         height: 40px;
         font-size: 16px;

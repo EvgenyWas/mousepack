@@ -23,15 +23,15 @@
 
 <script setup lang="ts">
 definePageMeta({
-  title: 'MousePack contact',
-  description: 'MousePack contact',
+  title: 'MousePack Contact',
+  description: 'Let’s Chat',
 });
 </script>
 
 <style scoped lang="scss">
 #contact-page {
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .contacts {
@@ -50,6 +50,18 @@ definePageMeta({
     &-link {
       color: $typography;
     }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  #contact-page {
+    padding-top: 100px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #contact-page {
+    padding-top: 130px;
   }
 }
 </style>

@@ -62,25 +62,32 @@
 
 <script setup lang="ts">
 definePageMeta({
-  title: 'MousePack about',
-  description: 'MousePack about',
+  title: 'MousePack About',
+  description:
+    // eslint-disable-next-line max-len
+    'Our creative studio specializes in bringing the unimaginable to life using Augmented Reality. Since 2021, our team has pushed the boundaries of Augmented Reality by expanding our experiences across multiple platforms.',
 });
 
 useHead({
-  script: [{ src: 'https://www.juicer.io/embed.js', type: 'text/javascript' }],
-  link: [{ href: 'https://www.juicer.io/embed.css', media: 'all', rel: 'stylesheet', type: 'text/css' }],
+  script: [{ src: 'https://assets.juicer.io/embed.js', type: 'text/javascript' }],
+  link: [{ href: 'https://assets.juicer.io/embed.css', media: 'all', rel: 'stylesheet', type: 'text/css' }],
 });
 
-// onMounted(() => {
-//   console.log('==========MOUNTED========');
-//   if (process.client) {
-//     console.log('==========process.client========');
-//     useHead({
-//       script: [{ src: 'https://www.juicer.io/embed.js', type: 'text/javascript' }],
-//       link: [{ href: 'https://www.juicer.io/embed.css', media: 'all', rel: 'stylesheet', type: 'text/css' }],
-//     });
-//   }
-// });
+onMounted(() => {
+  // @ts-ignore
+  if (typeof Juicer !== 'undefined') {
+    // @ts-ignore
+    Juicer?.initialize();
+  }
+});
+
+onUnmounted(() => {
+  // @ts-ignore
+  if (typeof Juicer !== 'undefined') {
+    // @ts-ignore
+    Juicer?.remove();
+  }
+});
 </script>
 
 <style scoped lang="scss">
