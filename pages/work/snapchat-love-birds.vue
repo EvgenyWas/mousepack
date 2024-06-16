@@ -7,7 +7,7 @@
 
     <section class="content row">
       <div class="promo col-6">
-        <video :controls="false" class="promo-video" autoplay loop muted>
+        <video class="promo-video" autoplay loop muted playsinline>
           <source :src="promoWebm" type="video/webm" />
           <source :src="promoMp4" type="video/mp4" />
         </video>
@@ -25,7 +25,7 @@
           over 60 million views.
         </p>
 
-        <video :controls="false" class="mechanic-video" autoplay loop muted>
+        <video class="mechanic-video" autoplay loop muted playsinline>
           <source :src="mechanicWebm" type="video/webm" />
           <source :src="mechanicMp4" type="video/mp4" />
         </video>

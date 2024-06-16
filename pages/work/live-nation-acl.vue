@@ -7,7 +7,7 @@
 
     <section class="content row">
       <div class="announcment col-6">
-        <video :controls="false" class="announcment-video" autoplay loop muted>
+        <video class="announcment-video" autoplay loop muted playsinline>
           <source :src="announcmentWebm" type="video/webm" />
           <source :src="announcmentMp4" type="video/mp4" />
         </video>
@@ -23,7 +23,7 @@
           restrooms, food and water stations.
         </p>
 
-        <video :controls="false" class="animation-video" autoplay loop muted>
+        <video class="animation-video" autoplay loop muted playsinline>
           <source :src="animationWebm" type="video/webm" />
           <source :src="animationMp4" type="video/mp4" />
         </video>
