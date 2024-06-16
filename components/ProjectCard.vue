@@ -26,6 +26,7 @@ defineProps<Props>();
     background-color: rgba($success, 0.5);
     border-radius: 25px;
     transition: box-shadow 200ms ease-in-out;
+    object-fit: cover;
   }
 
   &:hover {
