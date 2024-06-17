@@ -38,7 +38,8 @@
 
         <div class="footer-form col-12 col-md-6 col-lg-4">
           <p class="footer-form-label" for="subscribe-input">Join MousePack newsletter:</p>
-          <button class="footer-form-submit" type="button" @click="subscribe">
+          <p v-if="isSubscribePopupError" class="footer-form-error">Oops! It seems you're using ads blocker</p>
+          <button v-else class="footer-form-submit" type="button" @click="subscribe">
             <span v-if="isSubscribePopupLoading" class="submit-loader" />
             <span v-else class="submit-text">Subscribe</span>
           </button>
@@ -94,6 +95,7 @@ const config = useRuntimeConfig();
 
 const isMenuOpen = ref<boolean>(false);
 const isSubscribePopupLoading = ref<boolean>(false);
+const isSubscribePopupError = ref<boolean>(false);
 
 useServerHead({
   link: [
@@ -132,12 +134,27 @@ const closeMenu = () => {
 
 const toggleMenu = () => (isMenuOpen.value ? closeMenu() : openMenu());
 
+const onSubscribePopupError = () => {
+  isSubscribePopupLoading.value = false;
+  isSubscribePopupError.value = true;
+};
+
 const subscribe = () => {
   isSubscribePopupLoading.value = true;
   useCookie('MCPopupClosed').value = null;
   useCookie('MCPopupSubscribed').value = null;
-  useHead({ script: [{ key: Math.random().toString(16).slice(2), id: 'mcjs', src: config.public.mailchimpPopupSrc }] });
-  setTimeout(() => (isSubscribePopupLoading.value = false), 1000);
+  useHead({
+    script: [
+      {
+        key: Math.random().toString(16).slice(2),
+        id: 'mcjs',
+        src: config.public.mailchimpPopupSrc,
+        type: 'text/javascript',
+        onerror: onSubscribePopupError,
+      },
+    ],
+  });
+  setTimeout(() => (isSubscribePopupLoading.value = false), 1500);
 };
 
 watch(() => lgAndDown.value, closeMenu);
@@ -316,6 +333,13 @@ $nav-links: 4;
       text-align: center;
     }
 
+    &-error {
+      grid-column: span 2;
+      font-weight: 600;
+      color: $warning;
+      text-align: center;
+    }
+
     &-submit {
       grid-column: span 2;
       width: 100%;
@@ -425,7 +449,8 @@ $nav-links: 4;
       font-size: 20px;
       line-height: 28px;
 
-      &-label {
+      &-label,
+      &-error {
         text-align: left;
       }
 

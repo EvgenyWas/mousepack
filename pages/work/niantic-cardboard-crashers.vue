@@ -13,18 +13,17 @@
     </section>
 
     <section class="content row">
-      <p class="col-12 col-sm-6 text-subtitle">
-        We teamed up with Niantic to create a competitive multiplayer game that plays across platform from phone to AR
-        headset.
-      </p>
-      <img :src="getImage('Cardboard_footage_-_site_infn8w')" alt="Bog battle" class="col-12 col-sm-6" />
-    </section>
-
-    <section class="content row">
-      <img :src="getImage('sketch_board_wcagtr')" alt="Bog battle" class="col-12 col-sm-6" />
-      <p class="col-12 col-sm-6 text-subtitle">
-        The goal of the game is for players to use the balloon-powered vehicles to knock each other off the board.
-      </p>
+      <div class="texts col-12 col-lg-6 text-subtitle">
+        <p>
+          We teamed up with Niantic to create a competitive multiplayer game that plays across platform from phone to AR
+          headset.
+        </p>
+        <p>
+          The goal of the game is for players to use the balloon-powered vehicles to knock each other off the board.
+        </p>
+        <img :src="getImage('sketch_board_wcagtr')" alt="Bog battle" />
+      </div>
+      <img :src="getImage('Cardboard_footage_-_site_infn8w')" alt="Bog battle" class="col-12 col-lg-6" />
     </section>
   </div>
 </template>
@@ -66,5 +65,15 @@ const getImage = (publicID: string): string =>
 
 .content {
   margin-bottom: 40px;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & > p:nth-child(2) {
+    margin-bottom: auto;
+  }
 }
 </style>
