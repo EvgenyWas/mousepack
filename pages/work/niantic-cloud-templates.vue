@@ -6,27 +6,26 @@
     </div>
 
     <section class="content row">
-      <img :src="getImage('Bunny_Blitz_jdzort')" alt="Bunny blitz" width="900" class="col-12 col-sm-8" />
-      <p class="col-12 col-sm-4 text-subtitle">
-        To help spark new users ....MousePack created 3 unique game experiences that can be used to make an infinite
-        number of experiences.
-      </p>
+      <img :src="getImage('Bunny_Blitz_jdzort')" alt="Bunny blitz" width="900" class="col-12 col-xl-8" />
+      <div class="texts col-12 col-xl-4 text-subtitle">
+        <p>
+          To help spark new users ....MousePack created 3 unique game experiences that can be used to make an infinite
+          number of experiences.
+        </p>
+        <p>
+          Our three game edits include “Botanical Bunny,” “Bog Blasters,” and “Shooter.” Each game features it’s own
+          unique setting, components and game play.
+        </p>
+        <p>
+          Developers will have fun adjusting the components to create their own versions of these games. Try it on Cloud
+          today!
+        </p>
+      </div>
     </section>
 
-    <section class="content row">
-      <p class="col-12 col-sm-4 text-subtitle">
-        Our three game edits include “Botanical Bunny,” “Bog Blasters,” and “Shooter.” Each game features it’s own
-        unique setting, components and game play.
-      </p>
-      <img :src="getImage('Bog_Battle_fkkuxb')" alt="Bog battle" width="900" class="col-12 col-sm-8" />
-    </section>
-
-    <section class="content row">
-      <img :src="getImage('Botanical_Blaster_r16aol')" alt="Botanical blaster" width="900" class="col-12 col-sm-8" />
-      <p class="col-12 col-sm-4 text-subtitle">
-        Developers will have fun adjusting the components to create their own versions of these games. Try it on Cloud
-        today!
-      </p>
+    <section class="pictures row">
+      <img :src="getImage('Bog_Battle_fkkuxb')" alt="Bog battle" width="900" class="col-12 col-md-6" />
+      <img :src="getImage('Botanical_Blaster_r16aol')" alt="Botanical blaster" width="900" class="col-12 col-md-6" />
     </section>
   </div>
 </template>
@@ -63,6 +62,34 @@ const getImage = (publicID: string): string =>
 }
 
 .content {
+  display: flex;
+  align-items: center;
   margin-bottom: 40px;
+
+  .texts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.pictures {
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+@include media-breakpoint-up(md) {
+  .pictures {
+    gap: 0;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .content {
+    .texts {
+      margin-top: 0;
+    }
+  }
 }
 </style>
