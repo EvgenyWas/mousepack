@@ -67,16 +67,16 @@ const getImage = (publicID: string): string =>
   margin-bottom: 40px;
 
   .texts {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top: 20px;
   }
 }
 
 .pictures {
-  margin-bottom: 40px;
   gap: 20px;
+  margin-bottom: 40px;
 }
 
 @include media-breakpoint-up(md) {
