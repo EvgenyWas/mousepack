@@ -110,10 +110,10 @@ useServerHead({
 
 useServerSeoMeta({
   ogLocale: 'en',
-  ogImageUrl: '/favicon.png', // TODO
+  ogImageUrl: '/favicon.png',
   ogImageAlt: 'MousePack',
   ogType: 'website',
-  twitterImage: '/favicon.png', // TODO
+  twitterImage: '/favicon.png',
   twitterImageAlt: 'MousePack',
   twitterCard: 'summary_large_image',
   twitterSite: '@AlexBradt',
